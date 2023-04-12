@@ -1,5 +1,8 @@
 #!/bin/bash
 
+# Requires create-dmg and dylibbundler.
+# Both can be installed via homebrew.
+
 INSTALL_PREFIX="$PWD/lincity-ng"
 APP_NAME="LinCity-NG.app"
 
