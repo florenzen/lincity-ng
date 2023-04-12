@@ -14,6 +14,7 @@ echo "* Removing any existing installation"
 rm -rf ./$APP_NAME
 rm -f *.dmg
 rm -f *.xz
+rm -rf dmg.tmp
 
 echo "* Creating skeleton"
 mkdir -p ./$APP_NAME/Contents/Resources
