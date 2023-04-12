@@ -4,7 +4,7 @@ INSTALL_PREFIX="$PWD/lincity-ng"
 APP_NAME="LinCity-NG.app"
 
 cd ..
-./configure --with-apple-opengl-framework --prefix=$INSTALL_PREFIX x86_64-apple-darwin10.6.0 
+LIBS="-framework CoreFoundation" ./configure --with-apple-opengl-framework --prefix=$INSTALL_PREFIX
 jam
 jam install
 
