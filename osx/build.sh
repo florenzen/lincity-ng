@@ -11,9 +11,9 @@ jam install
 cd ./osx
 
 echo "* Removing any existing installation"
-    rm -rf ./$APP_NAME
-    rm *.dmg
-    rm *.xz
+rm -rf ./$APP_NAME
+rm -f *.dmg
+rm -f *.xz
 
 echo "* Creating skeleton"
 mkdir -p ./$APP_NAME/Contents/Resources
