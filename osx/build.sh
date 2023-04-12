@@ -32,15 +32,12 @@ echo "* Bunling dependencies"
 dylibbundler -od -b -x ./$APP_NAME/Contents/MacOS/lincity-ng -d ./$APP_NAME/Contents/libs/
 
 echo "* Creating DMG"
-    hdiutil create -size 100M -fs HFS+J -volname LinCity-NG LinCity-NG-tmp.dmg
-	hdiutil attach LinCity-NG-tmp.dmg -readwrite -mount required
-	cp -R LinCity-NG.app /Volumes/LinCity-NG/
-	cp ../README /Volumes/LinCity-NG
-	cp ../COPYING /Volumes/LinCity-NG
-	cp ../COPYING-data.txt /Volumes/LinCity-NG
-	cp ../COPYING-fonts.txt /Volumes/LinCity-NG
-	hdiutil detach /Volumes/LinCity-NG -force
-	./licenseDMG.py LinCity-NG-tmp.dmg ../COPYING
-	hdiutil convert LinCity-NG-tmp.dmg -format UDRO -o LinCity-NG-`awk -F " " '{print $3}' ../RELNOTES | awk 'NR == 1'`.dmg
-    xz -z LinCity-NG-`awk -F " " '{print $3}' ../RELNOTES | awk 'NR == 1'`.dmg
-	rm LinCity-NG-tmp.dmg
+DMG_NAME="LinCity-NG-`awk -F " " '{print $3}' ../RELNOTES | awk 'NR == 1'`.dmg"
+mkdir dmg.tmp
+cp -R LinCity-NG.app dmg.tmp
+cp ../README dmg.tmp
+cp ../COPYING dmg.tmp
+cp ../COPYING-data.txt dmg.tmp
+cp ../COPYING-fonts.txt dmg.tmp
+create-dmg --eula ../COPYING $DMG_NAME dmg.tmp
+rm -rf dmg.tmp
